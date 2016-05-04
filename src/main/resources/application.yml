@@ -1,0 +1,15 @@
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  port: 9000
+  tomcat:
+    max-threads: 5 # Maximum amount of worker threads.
+    uri-encoding: UTF-8
+spring:
+# PROFILES
+  profiles:
+    active: dev
+# THYMELEAF (ThymeleafAutoConfiguration)
+  thymeleaf:
+    enabled: true
+    cache: false
+    encoding: UTF-8
