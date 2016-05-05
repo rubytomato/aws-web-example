@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+  <property name="LOG_DIR" value="/var/log/app" />
+</included>

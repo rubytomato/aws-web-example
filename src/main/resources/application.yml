@@ -7,7 +7,7 @@ server:
 spring:
 # PROFILES
   profiles:
-    active: dev
+    active: local
 # THYMELEAF (ThymeleafAutoConfiguration)
   thymeleaf:
     enabled: true

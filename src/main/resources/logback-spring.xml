@@ -3,6 +3,14 @@
 
   <property name="LOG_DIR" value="D:/logs" />
 
+  <springProfile name="dev">
+    <include resource="logback-dev-logger.xml"/>
+  </springProfile>
+
+  <springProfile name="production">
+    <include resource="logback-prod-logger.xml"/>
+  </springProfile>
+
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{35} - %msg %n</pattern>
@@ -18,7 +26,7 @@
 
   <logger name="com.example" level="DEBUG" />
 
-  <logger name="org.hibernate" level="ERROR"/>
+  <logger name="org.hibernate" level="INFO"/>
   <logger name="org.springframework" level="INFO"/>
   <logger name="org.thymeleaf" level="INFO"/>
   <logger name="org.eclipse.jetty" level="INFO"/>
