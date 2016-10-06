@@ -2,4 +2,4 @@
 
 GitHub Desktopより更新
 
-Pre-Commit-Msg
+Prepare-Commit-Msg
