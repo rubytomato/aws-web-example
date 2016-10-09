@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>my - piyo</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 well">
+        piyo
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 well">
+        <p>hoge:<span th:text="${myCustom.hoge}">hoge</span></p>
+        <p>fuga:<span th:text="${myCustom.fuga}">fuga</span></p>
+        <p>myHeader:<span th:text="${myCustom.myHeader}">myHeader</span></p>
+        <p>myCookie:<span th:text="${myCustom.myCookie}">myCookie</span></p>
+        <p>mySession:<span th:text="${myCustom.mySession}">mySession</span></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
