@@ -1,20 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:persona="http://www.thymeleaf.org/persona">
 <head>
   <title>index - index</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-12 well">
-        index
+      <div class="col-md-12">
+        <h2>index</h2>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-12 well">
         <ul>
           <li><a href="/custom">custom</a></li>
+          <li><a href="/my/1">my</a></li>
           <li><a href="/hoge">hoge</a></li>
           <li><a href="/piyo?hoge=qwe&amp;fuga=rty">piyo</a></li>
           <li><a href="/poyo?hoge=asd&amp;fuga=fgh">poyo</a></li>
@@ -22,6 +31,53 @@
         </ul>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>th:block example</h3>
+        <th:block>
+          <p>blah blah...</p>
+        </th:block>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>persona:label example</h3>
+        <persona:label value="default" class="label label-default">
+          <p>blah blah...</p>
+          <p>point:<span th:text="${point}"></span></p>
+        </persona:label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>persona:if example</h3>
+        <persona:if value="default" class="label label-default" display="${true}">
+          <p>blah blah...</p>
+        </persona:if>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>persona:block example</h3>
+        <persona:block user="${user}">
+          <p>blah blah...</p>
+        </persona:block>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>cookie:ifExists example</h3>
+        <div cookie:ifExists="abc">
+          <p>blah blah...</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>

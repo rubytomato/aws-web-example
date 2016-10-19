@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:my="http://www.thymeleaf.org/thymeleaf/my">
+<head>
+  <title>my - my</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>my</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>element my:if example</h3>
+        <p>before</p>
+        <my:if />
+<!--/*
+        <my:if>
+          <p>blah blah...</p>
+          <p th:text="${item.name}">name</p>
+        </my:if>
+*/-->
+        <p>after</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>element my:label example</h3>
+        <p>before</p>
+        <my:label>
+          <p>inner</p>
+        </my:label>
+        <p>after</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>element my:block example</h3>
+        <p>before</p>
+        <my:block>
+          <p>inner</p>
+        </my:block>
+        <p>after</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>attribute my:if example</h3>
+        <p>before</p>
+        <div my:if="${item.remaining gt 10}" data-hoge="fuga">
+          <p>blah blah...</p>
+          <p th:text="${item.name}">name</p>
+        </div>
+        <p>after</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>attribute my:src example</h3>
+        <p>before</p>
+        <img my:src="${item}" data-hoge="fuga" />
+        <!--/*<img my:src="${__${valueName}__}" data-hoge="fuga" />*/-->
+        <p>blah blah...</p>
+        <p>after</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>th:if example</h3>
+        <div th:if="${item}">
+          <p>blah blah...</p>
+          <p th:text="${item.name}">name</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>th:block example</h3>
+        <th:block>
+          <p>blah blah...</p>
+        </th:block>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>pre processing example</h3>
+        <p th:text="${__${valueName}__.name}">blah blah...</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>Utility example</h3>
+        <p th:text="${#vh.hello(item.name)}"></p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

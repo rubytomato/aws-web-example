@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialect xmlns="http://www.thymeleaf.org/extras/dialect"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.thymeleaf.org/extras/dialect
+                        http://www.thymeleaf.org/xsd/thymeleaf-extras-dialect-2.1.xsd"
+    prefix="persona"
+    namespace-uri="http://http://www.thymeleaf.org/persona"
+    class="com.example.web.aws.thymeleaf.dialect.PersonaDialect">
+
+    <attribute-processor name="label" class="com.example.web.aws.thymeleaf.processor.PersonaLabelElementProcessor"></attribute-processor>
+    <attribute-processor name="if" class="com.example.web.aws.thymeleaf.processor.PersonaIfElementProcessor"></attribute-processor>
+
+</dialect>

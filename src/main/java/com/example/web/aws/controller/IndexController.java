@@ -13,33 +13,47 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.web.util.WebUtils;
 
 import com.example.web.aws.MyCustomAnnotation;
+import com.example.web.aws.model.UserModel;
 
 @Controller
 public class IndexController {
 	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
 	@RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
-	public String index() {
+	public String index(Model model) {
 		logger.info("index start");
+
+		UserModel user = new UserModel();
+		user.setId(1L);
+		user.setName("rubytomato");
+		model.addAttribute("user", user);
+
+		model.addAttribute("point", 123L);
+
 		return "index/index";
 	}
 
 	@MyCustomAnnotation
 	@RequestMapping(value = "/custom", method = RequestMethod.GET)
-	public String custom(Locale locale, TimeZone timezone, HttpServletRequest request, HttpServletResponse response) {
+	public String custom(Locale locale, TimeZone timezone, Model model, HttpServletRequest request, HttpServletResponse response) {
 		logger.info("custom start");
 		logger.info("locale:{}", locale);
 		logger.info("timezone:{}", timezone);
+
+		UserModel user = new UserModel();
+		user.setId(1L);
+		user.setName("rubytomato");
+		model.addAttribute("user", user);
 
 		Cookie cookie = new Cookie("myCookie","abc");
 		response.addCookie(cookie);
@@ -52,6 +66,7 @@ public class IndexController {
 			logger.info("session is not null");
 		}
 		session.setAttribute("mySession", new Date());
+		session.setAttribute("myUser", user);
 
 		logger.info("Session Id:{}", session.getId());
 
@@ -100,4 +115,74 @@ public class IndexController {
 
 		return "redirect:" + location.toString();
 	}
+
+	@RequestMapping(value = "/puge", method = RequestMethod.GET)
+	public String puge(UriComponentsBuilder baseUrl) {
+		//UriComponents uriComponents = MvcUriComponentsBuilder
+		//		.fromMethodName(IndexController.class, "fugo", "12").build();
+		//URI location = uriComponents.toUri();
+		//logger.info("fromMethodName URL:{}", location.toString());
+		//return "redirect:" + location.toString();
+
+		//String location = MvcUriComponentsBuilder.fromMappingName(baseUrl, "IC#fugo").arg(0, "12").build();
+		//logger.info("fromMappingName URL:{}", location);
+		//return "redirect:" + location;
+
+		//IndexController controller = MvcUriComponentsBuilder.on(IndexController.class);
+		//controller.fuga("12");
+
+		//UriComponents uriComponents = MvcUriComponentsBuilder
+		//		.fromMethodCall(controller).build();
+		//		//.fromMethodCall(
+		//		//		MvcUriComponentsBuilder.on(IndexController.class).fugo(12L)).build();
+		//URI location = uriComponents.toUri();
+		//logger.info("URL:{}", location.toString());
+		//return "redirect:" + location.toString();
+
+		MvcUriComponentsBuilder builder = MvcUriComponentsBuilder.relativeTo(baseUrl);
+		UriComponents uriComponents = builder.withMethodName(IndexController.class, "fugo", 12L).build();
+		URI location = uriComponents.toUri();
+		logger.info("URL:{}", location.toString());
+		return "redirect:" + location.toString();
+
+	}
+
+	@RequestMapping(value = "/fuga", method = RequestMethod.GET)
+	public String fuga() {
+		logger.info("index fuga");
+		return "index/custom";
+	}
+
+	@RequestMapping(value = "/fugo/{id}", method = RequestMethod.GET /*, name = "fuga"*/)
+	public String fugo(@PathVariable("id") Long id) {
+		logger.info("index fugo");
+		return "index/custom";
+	}
+
+	@RequestMapping(value = "/fugu", method = RequestMethod.GET)
+	public String fugu(HttpServletRequest request) {
+		logger.info("getScheme:{}", request.getScheme());
+		logger.info("getServerName:{}", request.getServerName());
+		logger.info("getServerPort:{}", request.getServerPort());
+		logger.info("isSecure:{}", request.isSecure());
+
+		logger.info("getProtocol:{}", request.getProtocol());
+		logger.info("getMethod:{}", request.getMethod());
+		logger.info("getServletPath:{}", request.getServletPath());
+
+
+		logger.info("getLocalAddr:{}", request.getLocalAddr());
+		logger.info("getLocalName:{}", request.getLocalName());
+		logger.info("getLocalPort:{}", request.getLocalPort());
+
+		logger.info("getRemoteAddr:{}", request.getRemoteAddr());
+		logger.info("getRemoteHost:{}", request.getRemoteHost());
+		logger.info("getRemotePort:{}", request.getRemotePort());
+
+		logger.info("getRequestURI:{}", request.getRequestURI());
+		logger.info("getRequestURL:{}", request.getRequestURL().toString());
+
+		return "redirect:" + "/";
+	}
+
 }

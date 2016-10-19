@@ -6,11 +6,57 @@
 </head>
 <body>
   <div class="container">
+
     <div class="row">
       <div class="col-md-12 well">
         custom
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2>persona:label example</h2>
+        <persona:label value="default" class="label label-default">
+          <p>blah blah...</p>
+        </persona:label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2>persona:if example</h2>
+        <persona:if value="default" class="label label-default" display="${false}">
+          <p>blah blah...</p>
+        </persona:if>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2>persona:block example</h2>
+        <persona:block user="${user}">
+          <p>blah blah...</p>
+        </persona:block>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2>my:if example</h2>
+          <img src="" my:src="@{https://images-na.ssl-images-amazon.com/images/I/718OAKrAH6L._SL1500_.jpg}" />
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12 well" th:with="x=${101}">
+        <h2>th:if example</h2>
+        <th:block th:if="${(x % 2) eq 0}">
+          <p>blah blah...</p>
+        </th:block>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>
