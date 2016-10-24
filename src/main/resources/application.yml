@@ -26,9 +26,6 @@ spring:
     restart:
       additional-exclude: "**/*.xml" # Additional patterns that should be excluded from triggering a full restart.
       additional-paths: # Additional paths to watch for changes.
-        - src/main/resources/sql
-        - src/main/resources/xsd
-#        - C:/Users/Shin/dev/trigger-file
       enabled: true # Enable automatic restart.
       exclude: META-INF/maven/**, META-INF/resources/**, resources/**, static/**, public/**, templates/**, **/*Test.class, **/*Tests.class, git.properties # Patterns that should be excluded from triggering a full restart.
       poll-interval: 1000 # Amount of time (in milliseconds) to wait between polling for classpath changes.

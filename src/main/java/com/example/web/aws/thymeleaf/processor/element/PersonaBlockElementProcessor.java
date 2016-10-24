@@ -71,7 +71,9 @@ public class PersonaBlockElementProcessor extends AbstractNoOpElementProcessor {
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			UserModel u = (UserModel) session.getAttribute("user");
-			System.out.println("session user:" + u.toString());
+			if (u != null) {
+				System.out.println("session user:" + u.toString());
+			}
 		}
 
 		return true;

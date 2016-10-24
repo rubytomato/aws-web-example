@@ -3,16 +3,17 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:persona="http://www.thymeleaf.org/persona">
 <head>
-  <title>index - index</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>index - [A] index</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <h2>index</h2>
@@ -24,6 +25,9 @@
         <ul>
           <li><a href="/custom">custom</a></li>
           <li><a href="/my/1">my</a></li>
+          <li><a href="/redirect/entry">redirect [A] entry</a></li>
+          <li><a href="/redirect2/entry">redirect2 [A] entry</a></li>
+          <li><a href="/redirect3/entry">redirect3 [A] entry</a></li>
           <li><a href="/hoge">hoge</a></li>
           <li><a href="/piyo?hoge=qwe&amp;fuga=rty">piyo</a></li>
           <li><a href="/poyo?hoge=asd&amp;fuga=fgh">poyo</a></li>
@@ -79,5 +83,11 @@
     </div>
 
   </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
