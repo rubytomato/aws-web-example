@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
   <title>index - [A] index</title>
 </head>
 <body>
@@ -28,11 +29,59 @@
           <li><a href="/redirect/entry">redirect [A] entry</a></li>
           <li><a href="/redirect2/entry">redirect2 [A] entry</a></li>
           <li><a href="/redirect3/entry">redirect3 [A] entry</a></li>
+
+          <li><a href="/util/s1">s1</a></li>
+          <li><a href="/util/s2">s2</a></li>
+          <li><a href="/util/s3">s3</a></li>
+
+          <li><a href="/cache/cache">cache</a></li>
+          <li><a href="/cache/nocache">nocache</a></li>
+          <li><a href="/cache/nothing">nothing</a></li>
+
           <li><a href="/hoge">hoge</a></li>
           <li><a href="/piyo?hoge=qwe&amp;fuga=rty">piyo</a></li>
           <li><a href="/poyo?hoge=asd&amp;fuga=fgh">poyo</a></li>
           <li><a href="/puyo?hoge=zxc&amp;fuga=vbn">puyo</a></li>
         </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 well">
+        <div>
+          <a href="/util/s3?chk_flg1=on&amp;chk_flg2=on&amp;chk_flg3=off&amp;chk_flg4=on">getParametersStartingWith</a>
+        </div>
+        <div>
+          <a href="/util/s3?chk_flg=a&amp;chk_flg=b&amp;chk_flg=c&amp;chk_flg=d">getParametersStartingWith</a>
+        </div>
+      </div>
+
+      <div class="col-md-12 well">
+        <div>
+          <a href="/util/s3?q=a=10;a=11;b=21,22,23;c=33">parseMatrixVariables</a>
+        </div>
+      </div>
+
+      <div class="col-md-12 well">
+        <form action="/util/s4" method="POST" class="form-horizontal">
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">name</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="name" name="name" type="text" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">email</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="email" name="email" type="email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" name="send" class="btn btn-default">送信</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -73,7 +122,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="foo">
       <div class="col-md-12 well">
         <h3>cookie:ifExists example</h3>
         <div cookie:ifExists="abc">
@@ -82,6 +131,59 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12 well">
+        <h3>modernizr example</h3>
+        <div>
+          <h4>Event Listener</h4>
+          <p id="eventListener">false</p>
+        </div>
+        <div>
+          <h4>Geolocation API</h4>
+          <p id="geolocationAPI">false</p>
+          <p id="out">out</p>
+        </div>
+        <div>
+          <h4>History API</h4>
+          <p id="historyAPI">false</p>
+        </div>
+        <div>
+          <h4>Notification</h4>
+          <p id="notification">false</p>
+          <p id="permission">permission</p>
+        </div>
+        <div>
+          <h4>postMessage</h4>
+          <p id="postMessage">false</p>
+        </div>
+        <div>
+          <h4>ServiceWorker API</h4>
+          <p id="serviceWorkerAPI">false</p>
+        </div>
+        <div>
+          <h4>Touch Events</h4>
+          <p id="touchEvents">false</p>
+        </div>
+        <div>
+          <h4>Force Touch Events</h4>
+          <p id="forceTouchEvents">false</p>
+        </div>
+        <div>
+          <h4>File API</h4>
+          <p id="fileAPI">false</p>
+        </div>
+        <div>
+          <h4>Local Storage</h4>
+          <p id="localStorage">false</p>
+        </div>
+        <div>
+          <h4>Session Storage</h4>
+          <p id="sessionStorage">false</p>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -89,5 +191,107 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="/js/main.js"></script>
+<script src="/js/sub2.js"></script>
+<script src="/js/sub3.js"></script>
+<script type="text/javascript" src="/vendor/modernizr/modernizr-custom.js"></script>
+<script type="text/javascript">
+$(function(){
+console.log("start");
+console.dir(Modernizr);
+
+if (Modernizr.eventlistener) {
+    $("#eventListener").text("true");
+}
+if (Modernizr.geolocation) {
+    $("#geolocationAPI").text("true");
+}
+if (Modernizr.history) {
+    $("#historyAPI").text("true");
+}
+if (Modernizr.notification) {
+    $("#notification").text("true");
+}
+if (window.Notification) {
+	$("#permission").text(window.Notification.permission);
+}
+if (Modernizr.postmessage) {
+    $("#postMessage").text("true");
+}
+if (Modernizr.serviceworker) {
+    $("#serviceWorkerAPI").text("true");
+}
+if (Modernizr.filereader) {
+    $("#fileAPI").text("true");
+}
+if (Modernizr.localstorage) {
+    $("#localStorage").text("true");
+}
+if (Modernizr.sessionstorage) {
+    $("#sessionStorage").text("true");
+}
+if (Modernizr.touchevents) {
+    $("#touchEvents").text("true");
+}
+if (Modernizr.forcetouch) {
+    $("#forceTouchEvents").text("true");
+}
+
+function geoFindMe() {
+	var output = document.getElementById("out");
+
+	if (!navigator.geolocation){
+		alert("このブラウザは位置情報をサポートしていません");
+		return;
+	}
+
+	function success(position) {
+		var latitude  = position.coords.latitude;
+		var longitude = position.coords.longitude;
+
+		output.innerHTML = '<p>Latitude is ' + latitude + '° <br/>Longitude is ' + longitude + '°</p>';
+
+	};
+
+	function error() {
+		output.innerHTML = "Unable to retrieve your location";
+	};
+
+	output.innerHTML = "<p>Locating…</p>";
+
+	navigator.geolocation.getCurrentPosition(success, error);
+}
+
+function notifyMe() {
+	// ブラウザが通知をサポートしているか確認する
+	if (!("Notification" in window)) {
+		alert("このブラウザはシステム通知をサポートしていません");
+		return;
+	}
+
+	// すでに通知の許可を得ているか確認する
+	else if (Notification.permission === "granted") {
+	    // 許可を得ている場合は、通知を作成する
+	    var notification = new Notification("Hi there!");
+	}
+
+	// 許可を得ていない場合は、ユーザに許可を求めなければならない
+	else if (Notification.permission !== 'denied') {
+	    Notification.requestPermission(function (permission) {
+	      // ユーザが許可した場合は、通知を作成する
+	      if (permission === "granted") {
+	        var notification = new Notification("Hi there!");
+	      }
+	    });
+	}
+
+	// 最後に、ユーザが通知を拒否した場合は、これ以上ユーザに 
+	// 迷惑をかけてはいけないことを尊重すべきです。
+}
+
+geoFindMe();
+notifyMe();
+
+});
+</script>
 </body>
 </html>
